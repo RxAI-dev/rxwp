@@ -1,0 +1,29 @@
+{
+  "name": "@rxwp/babel-plugin-transform-xjsx",
+  "version": "0.0.1",
+  "description": "x:JSX Dynamic Template Language Meta Compiler - transforms x:JSX template expressions (components, directives, structural directives, etc.) into compatible native JSX. Could be used in any JSX framework and provides the best possible Developer Experience",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "JSX",
+    "x:JSX",
+    "babel-plugin",
+    "transform",
+    "template",
+    "dynamic-templates"
+  ],
+  "author": "Adam Filipek (Reactive AI)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@babel/core": "^7.28.3",
+    "@babel/helper-plugin-utils": "^7.27.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.28.3",
+    "@babel/plugin-syntax-jsx": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@babel/types": "^7.28.2"
+  }
+}

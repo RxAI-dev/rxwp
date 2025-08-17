@@ -1,0 +1,23 @@
+{
+  "name": "@rxwp/runtime",
+  "version": "0.0.1",
+  "description": "DOM Runtime library for Reactive Web Platform, based on its reactivity module and made for custom extended dom-expressions transform",
+  "main": "dist/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "DOM",
+    "runtime",
+    "reactive",
+    "fine-grained",
+    "change-detection"
+  ],
+  "author": "Adam Filipek (Reactive AI)",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@rxwp/reactivity": "*",
+    "@rxwp/dom-reconcile": "*"
+  }
+}

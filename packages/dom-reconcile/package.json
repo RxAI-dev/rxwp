@@ -1,0 +1,19 @@
+{
+  "name": "@rxwp/dom-reconcile",
+  "version": "0.0.1",
+  "description": "The world's most advanced DOM reconcile algorithm that's optimizing the number of DOM updates - could be even more than 2x faster than classic LIS/LCS based algorithm, that are optimized for array iterations, that are far less expensive than real DOM updates. Sequential Three-Way Splice algorithm is optimized of DOM updates - doing even 2x less DOM updates for complex reconcile cases. It has also all the advanced fast path optimizations, to handle reconciliation with O(N) efficiency",
+  "main": "dist/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reconcile",
+    "dom-diff",
+    "STWS",
+    "modern-algorithm",
+    "next-gen"
+  ],
+  "author": "Adam Filipek (Reactive AI)",
+  "license": "Apache-2.0"
+}

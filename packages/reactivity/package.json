@@ -1,0 +1,19 @@
+{
+  "name": "@rxwp/reactivity",
+  "version": "0.0.1",
+  "description": "World's most advanced fine-grained reactivity library, with full graph support with nested computations, hybrid eager/lazy evaluation mode, suspense support and asynchronous event loop synchronization with asynx transactions",
+  "main": "dist/index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reactivity",
+    "reactive",
+    "fine-grained",
+    "performance",
+    "change-detection"
+  ],
+  "author": "Adam Filipek (Reactive AI)",
+  "license": "Apache-2.0"
+}
