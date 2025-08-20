@@ -4,7 +4,7 @@
 **Reactive Web Platform (rx:WP)** concept was designed about 3 years ago, now we will go back to its implementation, because it provides crucial features for seamless integration with Reactive Language/Awareness models and Reactive AI Ecosystem - **Live Server/Off-Thread Components** components. They are stateful reactive components running on server or on separate thread - environments without the DOM access. **rx:Web** abstractions like **View Transfer Protocol** are emulating DOM environment on the server/off-thread and reflecting updates on client side, with just minimal granular data transfer/update.
 It includes also many breakthroughs in the performance/computational efficiency with next-gen algorithms like **Sequential Three-Way Splice**, and next-gen features, especially components pooling and re-mounting, to avoid recreating new DOM nodes.
 
-**rx:Web Platform**, is a vision of next-gen web & native applications. It's a modular set of frameworks
+**rx:Web Platform**, is a vision of next-gen web & native applications. It's a modular set of libraries
 
 > **rx:WP** introduces many new features/concepts and may seem difficult to learn, at first glance. That's because it's
 > a lot of new knowledge, but all these concepts are based on known standards and simple, declarative & functional
