@@ -1,4 +1,4 @@
-import { contextId, context, renderEffect, untrack } from '../reactivity'
+import { contextId, context, renderEffect, untrack } from '@rxwp/reactivity'
 
 import type { JSX } from './JSX'
 import { children } from './component'

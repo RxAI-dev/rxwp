@@ -786,7 +786,7 @@ const TodoApp = () => {
 
 ### Observable Optimization
 
-- **Single-function pattern** is faster than tuple approach:
+- **Single-function pattern** is faster than tuple approach (but we have also tuple based `signal` primitive):
   ```typescript
   // rx:WP Reactivity: 1 function call
   count(p => p + 1);
@@ -798,7 +798,7 @@ const TodoApp = () => {
 
 - **Batched async operations** from multiple sources:
   ```typescript
-  // Without AsynX: 3 separate updates
+  // Without AsynX: 2 separate updates
   Promise.resolve().then(() => count(1));
   Promise.resolve().then(() => name('John'));
   

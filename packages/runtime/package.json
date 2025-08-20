@@ -19,5 +19,9 @@
   "dependencies": {
     "@rxwp/reactivity": "*",
     "@rxwp/dom-reconcile": "*"
+  },
+  "peerDependencies": {
+    "@rxwp/reactivity": "*",
+    "@rxwp/dom-reconcile": "*"
   }
 }

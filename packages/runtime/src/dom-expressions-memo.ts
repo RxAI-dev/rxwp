@@ -1,4 +1,4 @@
-import { memo as $memo } from '../reactivity'
+import { memo as $memo } from '@rxwp/reactivity'
 
 export function memo<T>(fn: (v?: T) => T, equals: boolean) {
     if (typeof fn !== 'function') return fn

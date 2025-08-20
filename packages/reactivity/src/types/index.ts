@@ -205,7 +205,7 @@ export interface WritableNode<T> extends ObservableNode<T> {
  * about its parent and children relations, and data specific to
  * reactive scope, like context and cleanups
  */
-interface Owner {
+export interface Owner {
     app: (Record<string | symbol, any> & { owner: ObserverNode<any> }) | null
     owner: ObserverNode<any> | null
     owned: ObserverNode<any>[] | null

@@ -4,7 +4,8 @@ import type {
     MemoCreator,
     NotPending,
     Observable,
-    ObservableCreator, ObservableSignal,
+    ObservableCreator,
+    ObservableSignal,
     ObserverCreator,
     ObserverNode,
     QueueItem,
@@ -12,8 +13,8 @@ import type {
     Subscription,
     WritableNode
 } from './types'
-import {callAll, isFunction, lookup, runAll} from './utils'
-import {ObserverType, State} from './enums'
+import { callAll, isFunction, lookup, runAll } from './utils'
+import { ObserverType, State } from './enums'
 
 /* **************************************************************************************************** *
  * Classes - Reactive Graph nodes and queues                                                            *
@@ -450,6 +451,50 @@ export const root = <T>(fn: (dispose: () => void) => T, detachedOwner?: Observer
     return result as T
 }
 
+export const remountableRoot = <T>(fn: (dispose: () => void) => T, detachedOwner?: ObserverNode<any>): T => {
+    detachedOwner && ($$Owner = detachedOwner)
+    const owner = $$Owner,
+        listener = $$Observer,
+        root = fn.length === 0 ? UNOWNED : createObserverNode(ObserverType.RemountableRoot, State.Actual),
+        disposer = () => {
+            if (root === UNOWNED) throw new Error('Cannot dispose Unowned root!')
+            if ($$IsRunning) $$Disposes.add(root)
+            else dispose(root)
+
+            // Explicitly dispose owned nodes - normally it's skipped for remountable
+            if (root.owned) {
+                for (const owned of root.owned) {
+                    if ($$IsRunning) $$Disposes.add(owned)
+                    else dispose(owned)
+                }
+            }
+        },
+        isTopLevel = !$$IsRunning
+    let result = undefined
+    $$Owner = root
+    $$Observer = null
+    try {
+        result = fn(disposer)
+    } catch (err) {
+        handleError(err)
+    } finally {
+        if (isTopLevel) {
+            $$IsRunning = true
+            if ($$Changes.size > 0 || $$Updates.size > 0) {
+                $$Time++
+                runQueues()
+            } else if ($$Effects.size > 0) {
+                $$Time++
+                runEffects()
+            }
+            $$IsRunning = false
+        }
+        $$Observer = listener
+        $$Owner = owner
+    }
+    return result as T
+}
+
 /**
  * Observable
  *
@@ -684,6 +729,9 @@ export function context<T>(id: symbol, value?: T): T | undefined {
 export const isListening = () => $$Observer !== null
 
 export const getOwner = () => $$Owner
+export const setOwner = (owner: ObserverNode<any>) => {
+    $$Owner = owner
+}
 
 /* ********************************************************************* *
  | --------------------------------------------------------------------- |
@@ -999,7 +1047,6 @@ function markObservers(sub: Subscription, stateFn: <T>(item: ObserverNode<T>) =>
     }
 }
 
-
 function markForDisposal(children: ObserverNode<any>[], pending: boolean): void {
     for (let i = 0, l = children.length; i < l; ++i) {
         const child = children[i]
@@ -1057,7 +1104,7 @@ function disconnect<T>(observer: ObserverNode<T>, final: boolean): void {
         observer.cleanups = null
     }
     observer.ctx = null
-    if (owned !== null) {
+    if (owned !== null && observer.type !== ObserverType.RemountableRoot) {
         for (i = 0; i < owned.length; ++i) dispose(owned[i])
         observer.owned = null
     }
@@ -1156,4 +1203,11 @@ export function createSuspense<T, F>(
         // Return a function that selects between content and fallback
         return contentObserver;
     })
+}
+
+export function remount(observer: ObserverNode<any>) {
+    for (const owned of observer.owned!) {
+        owned.state |= State.Stale
+        updateNode(owned)
+    }
 }

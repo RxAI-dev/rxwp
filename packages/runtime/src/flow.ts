@@ -11,7 +11,7 @@ import {
   Observable,
   observer,
   renderEffect
-} from '../reactivity'
+} from '@rxwp/reactivity'
 import { indexArray, mapArray, MapArrayOptions, IndexArrayOptions } from './arrays'
 
 import type { ComponentProps, JSX, ValidComponent } from './types'

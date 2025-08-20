@@ -1,8 +1,8 @@
-import {createResource, memo, untrack} from '../reactivity'
+import {createResource, memo, untrack} from '@rxwp/reactivity'
 
 import {JSX, Component, SplitProps, MergeProps} from './types'
 import {nextHydrateContext, setHydrateContext, sharedConfig} from './hydration'
-import {signal} from "../reactivity/observable";
+import { signal } from "@rxwp/reactivity"
 
 export const $PROXY = Symbol('rx-web/Proxy')
 

@@ -33,6 +33,5 @@ export const enum ObserverType {
     EffectsQueue = RenderEffect | AfterEffect,
     Computed = 1 << 4,
     Root = 1 << 5,
-    Suspense = 1 << 6,
-    SuspenseFallback = 1 << 7,
+    RemountableRoot = 1 << 6,
 }
