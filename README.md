@@ -1,0 +1,22 @@
+**Reactive Web Platform (rx:WP)** concept was designed about 3 years ago, now we will go back to its implementation, because it provides crucial features for seamless integration with Reactive Language/Awareness models and Reactive AI Ecosystem - **Live Server Off-Thread Components** components. They are stateful reactive components running on server or on separate thread - environments without the DOM access. **rx:Web** abstractions like **View Transfer Protocol** are emulating DOM environment on the server/off-thread and reflecting updates on client side, with just minimal granular data transfer/update.
+
+It includes also many breakthroughs in the performance/computational efficiency with next-gen algorithms like **Sequential Three-Way Splice**, and next-gen features, especially components pooling and re-mounting, to avoid recreating new DOM nodes.
+
+More details will be provided soon and base features implementation is available on our [GitHub](https://github.com/RxAI-Dev/rxwp) 
+
+## Most Important Features
+**rx:WP** is introducing a lot of completely new features, patterns and possibilities, including the world's most powerful View Layer Architecture - based on closures, execution contexts, declarative composition and concepts like:
+- **x:JSX** - Next-Gen Dynamic Template Language
+- _**View Injection** design pattern_ and advanced, 2-level **X View Injection System (rx:VI)**
+- Closure as an instance - all view layer primitives like Components & Directives are functions, that are called only once, on create. Then, initialized closure acts like their "instance", existing as an encapsulated scope and execution context, until Component/Directive is removed (or even longer, when using Pools)
+- Rich set of built-in view layer primitives, made for the best cooperation with **rx:VI**, **x:JSX** and other **rx:WP** features/concepts
+- _Higher-order Factories_ - as all Component/Directive functions are called only once, they can act as factories for exactly everything - **rx:WP** introduces special, functional factories (functions creating functions), to create different kinds of view layer primitives, with different rendering behaviors
+- Cascade Closures & Cascade Closure Services patterns - sharing service logic with multi-level closures, created on different execution contexts - _Higher-order Factories_ are often expecting Cascade Closures
+- **rx:Pools** - concept of storing and re-using objects/expressions that are expensive in create time - mainly DOM elements - instead of creating new ones - could greatly decrease the number of most expensive DOM operations, but increase the memory usage - depending on the Pool type and the use case
+    - pools could also act as explicit memory management solution - especially in environments without Garbage Collection
+- Basic, Advanced and Alternative Render Modes - different variations of keyed, non-keyed and hybrid modes, based on most advanced and efficient algorithms, providing world's top level performance for every possible use case
+- Re-mounting concept - re-mountable components and elements - over the scale performance boost, especially in shared, hybrid modes - re-using old (disposed) Component instances, that would be garbage collected normally, with all their connected DOM trees
+- Pre-mounting concept - re-mountable components and elements, can be also pre-created in background (on idle) with some default props and stored in shared pools for re-use - i.e. list (in hybrid mode), that's using data fetched from server, could pre-create expected number of rows, when waiting for first response with data. Then, after receiving data, only re-mount (re-activate reactivity) pre-created elements, instead of creating new ones. That's the **world's fastest** possible way to mount the async-data based list elements.
+- Move _everything/everywhere_ concept - every component and element, could be moved anywhere else in the DOM, without re-creating DOM nodes and component "instances" - not only within the same parent - with different built-in APIs
+- **rx:Backend Server Components** - inspired by upcoming **React** Server Components concept, but with key difference - in **React** RFC Server Components are just alternative one-time data fetching method, in **rx:WP** they are another example of Inversion of Control - they are parts of UI, completely controlled by server.
+- **rx:Thread** off-thread components
